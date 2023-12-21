@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block main %}
+
+<!-- Log In section -->
+<section class="book_section layout_padding">
+  <div class="container">
+    <div class="heading_container">
+      <h2>
+        Log In
+      </h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form_container">
+          <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Your Username" />
+            </div>
+            <div>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+            </div>
+            {% if data.is_not %}
+              <p>Incorrect ! Please, enter your username and password again</p>
+            {% endif %}
+            <div class="registration_btn_section">
+              <div class="btn_box">
+                <button name="sing_up" value="1">
+                  Sign In
+                </button>
+              </div>
+              <div class="registration_btn">
+                <a href="{% url 'registration' %}">
+                  Sign Up
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end log in section -->
+
+{% endblock main %}

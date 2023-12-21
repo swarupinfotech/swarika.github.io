@@ -1,0 +1,131 @@
+.invoice_section {
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    width: 100% !important;
+    font-size: 14px !important;
+    height: 80%;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table td {
+    vertical-align: top;
+}
+
+.invoice_section {
+    background-color: #f6f6f6;
+}
+
+#body-wrap {
+    background-color: #f6f6f6;
+    width: 100% !important;
+}
+
+#body-wrap.container {
+    display: block !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    clear: both !important;
+}
+
+.container .content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: block;
+    padding: 20px;
+}
+
+table.main {
+    background: #fff;
+    border: 1px solid #e9e9e9;
+    border-radius: 3px;
+}
+
+td.content-wrap.aligncenter {
+    padding: 20px;
+}
+
+td.content-block {
+    padding: 0 0 20px;
+}
+
+.content .footer {
+    width: 100%;
+    clear: both;
+    color: #999;
+    padding: 20px;
+}
+
+.content .footer a {
+    color: #999;
+}
+
+.content .footer p,
+.content .footer a,
+.content .content .footer td {
+    font-size: 12px;
+}
+
+.content-block h2 {
+    color: #000;
+    margin: 40px 0 0;
+    line-height: 1.2;
+    font-weight: 900;
+    font-size: 40px;
+}
+
+.content-block a,
+.aligncenter.content-block a {
+    color: #1ab394;
+    text-decoration: underline;
+}
+
+.aligncenter {
+    text-align: center;
+}
+
+.invoice {
+    margin: 40px auto;
+    text-align: left;
+    width: 80%;
+}
+
+.invoice td {
+    padding: 5px 0;
+}
+
+.invoice .invoice-items {
+    width: 100%;
+}
+
+.invoice .invoice-items td {
+    border-top: #eee 1px solid;
+}
+
+.invoice .invoice-items .total td {
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
+    font-weight: 700;
+}
+
+/* -------------------------------------
+    RESPONSIVE AND MOBILE FRIENDLY STYLES
+------------------------------------- */
+@media only screen and (max-width: 640px) {
+    .content-block h2 {
+        font-weight: 600 !important;
+        margin: 20px 0 5px !important;
+        font-size: 18px !important;
+    }
+
+    .content,
+    .content-wrap {
+        padding: 10px !important;
+    }
+
+    .invoice {
+        width: 100% !important;
+    }
+}

@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block main %}
+
+<!-- registration section -->
+<section class="book_section layout_padding">
+  <div class="container">
+    <div class="heading_container">
+      <h2>
+        Create Account
+      </h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form_container">
+          <form action="{% url 'registration' %}" method="POST">
+            {% csrf_token %}
+            <div>
+              <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name" />
+            </div>
+            <div>
+              <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name" />
+            </div>
+            <div>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" />
+            </div>
+            <div>
+              <input type="text" class="form-control" id="username" name="username" placeholder="Your Username" />
+            </div>
+            <div>
+              <input type="text" class="form-control" id="password" name="password" placeholder="Your Password" />
+            </div>
+            <div>
+              <input type="text" class="form-control" id="rpassword" name="rpassword" placeholder="Repeat Password" />
+            </div>
+            {% if data.is_correct %}
+              <p>{{ data.is_correct }}</p>
+            {% endif %}
+            <div class="registration_btn_section">
+              <div class="btn_box">
+                <button name="sing_up" value="1">
+                  Sign Up
+                </button>
+              </div>
+              <div class="registration_btn">
+                <a href="{% url 'login' %}">
+                  Sign In
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end registration section -->
+
+{% endblock main %}

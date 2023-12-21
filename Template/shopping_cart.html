@@ -1,0 +1,73 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block main %}
+
+<section class="shopping_section layout_padding">
+    <div class="container mt-5 mb-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-8">
+                <div class="p-2">
+                    <h4>Shopping cart</h4>
+                </div>
+                {% for Order in DataOfCard %}
+                <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+                    <div class="mr-1"><img class="rounded" src="/media/{{ Order.Image }}" width="70"></div>
+                    <div class="d-flex flex-column align-items-center product-details"><span class="font-weight-bold">{{ Order.Name }}</span>
+                        <div class="d-flex flex-row product-desc">
+                            <div class="size mr-1"><span class="text-grey">Size:</span><span
+                                    class="font-weight-bold">&nbsp;M</span></div>
+                            <div class="color"><span class="text-grey">Type:</span><span
+                                    class="font-weight-bold">&nbsp;{{ Order.Type }}</span></div>
+                        </div>
+                    </div>
+                    <form action="{% url 'card' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="d-flex flex-row align-items-center qty">
+                        <button id="less_item" name="less_item" value="{{ Order.id }}">
+                            <i class="fa fa-minus text-danger"></i>
+                        </button>
+                            <h5 class="text-grey mt-1 mr-1 ml-1">{{ Order.Quantity }}</h5>
+                        <button id="add_item" name="add_item" value="{{ Order.id }}">
+                            <i class="fa fa-plus text-success"></i>
+                        </button>
+                        </div>
+                    </form>
+                    <div>
+                        <h5 class="text-grey">₹{{ Order.Price }}</h5>
+                    </div>
+                    <form action="{% url 'card' %}" method="POST">
+                        {% csrf_token %}
+                        <button class="d-flex align-items-center" id="delete_item" name="delete_item" value = "{{ Order.id }}"><i class="fa fa-trash mb-1 text-danger"></i>
+                        </button>
+                    </form>
+                </div>
+                {% endfor %}
+                {% if DataOfCard.count == 0 %}
+                    <div class="p-2" style = "text-align:center">
+                            <h5>Items have been not added</h5>
+                    </div>
+                        <a href = {% url 'menu' %}>
+                            <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
+                                <button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button" name="buy_food" value="1">Buy Your Food</button>
+                            </div>
+                        </a>
+                {% else %}
+                    {% if data.Insufficient_coins %}
+                        <div class="Insufficient_coins">
+                            <h5 style="text-align: center; margin-top: 10px">{{ data.Insufficient_coins }} <a href="{% url 'user' %}">click here<a></h5>
+                        </div>
+                    {% endif %}
+                    <form action="{% url 'card' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
+                            <button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="submit" name="pay_button" value="1">Proceed to Pay</button>
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock main %}
